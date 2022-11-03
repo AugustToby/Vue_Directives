@@ -1,0 +1,19 @@
+#records {
+    max-height: 250px;
+    overflow: scroll;
+}
+
+.Drawing {
+    background-color: blue;
+    font-style: oblique;
+}
+
+.Sketching {
+    background-color: brown;
+    font-style: inherit;
+}
+
+.Painting {
+    background-color: chartreuse;
+    font-style: initial;
+}
