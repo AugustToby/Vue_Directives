@@ -121,7 +121,7 @@
                             <td> {{ record.type }}</td>
                             <td> {{ record.medium }}</td>
                             <td> {{ Completed(record.complete) }}</td>
-                            <td> {{ record.notes }}</td>
+                            <td> {{ shortNote(record.notes) }}</td>  <!-- display only first 40 characters -->
                         </tr>
                     </table>
                 </div>
@@ -198,9 +198,10 @@
                         this.errors.push('Select a medium')
                     }
 
-                    if (this.notes.length > 40) {
-                        this.errors.push('You have entered to many characters')
-                    }
+                    // user should be able to enter as much text as they want, store it all
+                    // if (this.notes.length > 40) {
+                    //     this.errors.push('You have entered to many characters')
+                    // }
 
                     if (this.errors.length === 0) {
                         let record = {
@@ -231,6 +232,13 @@
                         return 'Completed'
                     } else {
                         return 'Not Completed'
+                    }
+                },
+                shortNote(note) {
+                    if (note.length > 40) {  // longer than 40
+                        return note.substring(0, 40) + '...'  // take first 40 chars, add ...
+                    } else {
+                        return note // the original note 
                     }
                 }
                 
